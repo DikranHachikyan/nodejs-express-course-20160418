@@ -1,0 +1,11 @@
+{
+  "name": "sample-application",
+  "version": "1.0.1",
+  "description": "Sample Application using node.js",
+  "main": "app.js",
+  "author": "Dikran Hachikyan",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^2.4.2"
+  }
+}
