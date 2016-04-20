@@ -1,12 +1,12 @@
 {
-  "name": "sample-application",
+  "name": "sample-app-with-routes",
   "version": "1.0.0",
-  "description": "Node.js and Express app",
+  "description": "",
   "main": "app.js",
-   "scripts": {
+  "scripts": {
     "start": "node app.js"
-     },
-  "author": "dikran Hachikyan",
+  },
+  "author": "Dikran Hachikyan",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.4.1",

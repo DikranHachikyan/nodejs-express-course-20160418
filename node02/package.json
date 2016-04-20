@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "description": "Sample Application using node.js",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+     },
   "author": "Dikran Hachikyan",
   "license": "ISC",
   "dependencies": {

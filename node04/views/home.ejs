@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= siteTitle; %></title>
+</head>
+<body>
+    <h1>Welcome to my app!</h1>
+    <p><%- welcome; %></p>
+    <ol>
+        <% items.forEach( function(item){ %>
+            <li><%= item %></li>
+        <% }); %>
+    </ol>
+    <a href="/about">About</a>
+</body>
+</html>
