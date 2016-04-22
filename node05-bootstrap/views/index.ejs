@@ -1,0 +1,16 @@
+<%- include('partials/header');%>
+
+<div class="container-fluid">
+  <div class="row">
+    <%
+        for(var i=0 ; i < items.length ; i++){
+    %>
+        <%- include('partials/article', { item: items[i]});%>
+    <%        
+        }
+    %>
+  </div>
+</div>
+    
+<%- include('partials/jsfiles');%>
+<%- include('partials/footer');%>

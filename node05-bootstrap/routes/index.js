@@ -1,0 +1,1 @@
+module.exports.index = require('./home.js');
