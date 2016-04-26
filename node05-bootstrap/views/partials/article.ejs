@@ -1,12 +1,16 @@
-<article class="col-sm-6">
-    <header>
-        <img src="/images-lg/<%=item.src %>" alt="<%=item.alt%>">
-    </header>
-    <section>
-        <h3><%=item.title%></h3>
-        <p><%-item.shortinfo%></p>
-    </section>
-    <footer>
-        <a href="#" class="btn btn-primary">Read More</a>
-    </footer>
+<article class="col-sm-4 col-md-3 col-lg-6">
+    <div class="row">
+        <header class="col-lg-4">
+            <img src="/images-lg/<%=item.src %>" alt="<%=item.alt%>" class="img-responsive img-rounded">
+        </header>
+        <div class="col-lg-8">
+            <section>
+                <h3><%=item.title%></h3>
+                <p><%-item.shortinfo%></p>
+            </section>
+            <footer>
+                <a href="#" class="btn btn-primary">Read More</a>
+            </footer>
+        </div>
+    </div>
 </article>
