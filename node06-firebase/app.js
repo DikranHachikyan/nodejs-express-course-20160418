@@ -9,6 +9,7 @@ app.set('views', './views');
 
 
 app.use(router.index);
+app.use(router.items);
 
 
 // Botstrap files

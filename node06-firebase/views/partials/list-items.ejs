@@ -1,0 +1,22 @@
+    <div class="row">
+       <% for( var i=0; i < items.length ; i++){%>
+        
+        <% if( i !== 0 && (i % 3) === 0){ %>
+         <div class="clearfix hidden-xs"></div>
+        <% } %>
+
+        <div class="col-sm-4">
+        <div class="thumbnail">
+            <img src="/images/<%= items[i].artwork; %>" alt="<%=items[i].title%>">
+            <div class="caption">
+                <h3><%=items[i].title; %> <small><%=items[i].artist; %></small></h3>
+                <p><%- items[i].description; %></p>
+                <p>
+                  <a href="/category/<%=category;%>/item/<%=items[i].id%>" class="btn btn-primary" role="button">Details</a>
+                  </p>
+            </div>
+            
+         </div>
+        </div>
+      <% } %>
+    </div>
