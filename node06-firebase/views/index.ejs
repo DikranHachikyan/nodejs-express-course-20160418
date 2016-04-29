@@ -1,5 +1,5 @@
 <%- include('partials/header', {title: 'Bootstrap Template'} ); %>
-  <div class="contaner-fluid">
+  <div class="container-fluid">
   	<% if ( typeof( categories ) !== 'undefined' ){%>
     	<%- include('partials/list-categories', {'categories': categories});%>
     <% } else if ( typeof(category) !== 'undefined' && typeof(items) !== 'undefined' ) {%>

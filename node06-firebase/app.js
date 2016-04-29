@@ -10,6 +10,7 @@ app.set('views', './views');
 
 app.use(router.index);
 app.use(router.items);
+app.use(router.auth);
 
 
 // Botstrap files
