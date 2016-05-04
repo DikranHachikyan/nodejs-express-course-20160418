@@ -6,6 +6,32 @@ var ref = new Firebase('https://mushop.firebaseio.com/');
 var catsRef = ref.child('categories');
 var collsRef = ref.child('collections');
 
+//---------- User login ---------------------------------
+var loginWithEmail = module.exports.loginWithEmail = function (user, onsuccess, onerror){
+	ref.authWithPassword({
+		'email': user.email,
+		'password' : user.password
+	},
+	function(error,authData){
+		var msg = 'Login failed!'
+		if( error)
+		{
+			onerror(error,msg);	
+		}	
+		else //всичко е Ок
+		{
+			var userRef = ref.child('users').child(authData.uid);
+			userRef.on('value', function(snap){
+				onsuccess(snap.val());
+			});
+
+		}
+	},
+	{
+		'remember': 'sessionOnly'
+	});
+};
+
 //---------- Add New User -------------------------------
 module.exports.addUser = function(user, onsuccess, onerror){
 		ref.createUser({
@@ -35,7 +61,19 @@ module.exports.addUser = function(user, onsuccess, onerror){
 				};
 				var userRef = ref.child('users').child(authData.uid);
 				userRef.set(currentUser);
-				onsuccess(currentUser);
+				loginWithEmail({
+					'email': user.email,
+					'password':user.password
+				}, function(cuser){
+					onsuccess(cuser);
+					console.log('----Loggedin----:', cuser);
+				},
+				  function(error,msg){
+				  	onerror(error,msg);
+				  	console.log('----Login error----:', error);
+				});
+
+				
 			}
 		});// create a new user
 }; //add new user
