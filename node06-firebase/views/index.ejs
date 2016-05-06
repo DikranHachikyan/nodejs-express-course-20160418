@@ -1,4 +1,7 @@
 <%- include('partials/header', {title: 'Bootstrap Template'} ); %>
+  <%if ( typeof(user) !== 'undefined'){%> 
+  	<h4>Hi, <%= user.firstname;%></h4>
+  <% } %>
   <div class="container-fluid">
   	<% if ( typeof( categories ) !== 'undefined' ){%>
     	<%- include('partials/list-categories', {'categories': categories});%>

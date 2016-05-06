@@ -6,6 +6,18 @@ var ref = new Firebase('https://mushop.firebaseio.com/');
 var catsRef = ref.child('categories');
 var collsRef = ref.child('collections');
 
+module.exports.isLoggedIn = function(onuserisauth){
+	var authData = ref.getAuth();
+	if( authData )
+	{
+		var userRef = ref.child('users').child(authData.uid);
+			userRef.on('value', function(snap){
+				onuserisauth(snap.val());
+			});
+	}
+
+}
+
 //---------- User login ---------------------------------
 var loginWithEmail = module.exports.loginWithEmail = function (user, onsuccess, onerror){
 	ref.authWithPassword({

@@ -2,7 +2,14 @@
   <div class="container-fluid">
   <div class="row">
   	<div class="col-sm-12">
-  		<%- include('partials/register-form');%>
+  		<% if( ui === 'register'){ %>
+  			<%- include('partials/register-form');%>
+  		<% }else if( ui === 'login'){ %>
+  			<%- include('partials/login-form');%>
+  		<% }else{ %>
+  			<h1>Unknown Page</h1>
+  			<a href="/">Home</a>
+  		<% }%>	
   	</div>
   </div>
   </div>
