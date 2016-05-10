@@ -1,8 +1,10 @@
 <%- include('partials/header', {title: 'Bootstrap Template'} ); %>
-  <%if ( typeof(user) !== 'undefined'){%> 
-  	<h4>Hi, <%= user.firstname;%></h4>
-  <% } %>
   <div class="container-fluid">
+  <div class="row">
+     <%if ( typeof(user) !== 'undefined'){%> 
+      <h4 class="col-sm-12">Hi, <%= user.firstname;%></h4>
+      <% } %>
+  </div>
   	<% if ( typeof( categories ) !== 'undefined' ){%>
     	<%- include('partials/list-categories', {'categories': categories});%>
     <% } else if ( typeof(category) !== 'undefined' && typeof(items) !== 'undefined' ) {%>

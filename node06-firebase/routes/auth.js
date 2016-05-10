@@ -1,7 +1,8 @@
 var express = require('express');
 var route   = express.Router();
 var multer  = require('multer');
-
+var jwt     = require('jwt-simple');
+var conf    = require('../config/');  
 var db  = require('../models/db.js');
 
 
@@ -17,25 +18,16 @@ route.use( multer().array() );
 
 //----------------- Login with Password & E-Mail ---------------
 route.post('/user/try-login', function(req,res,next){
-	var user = {
-		'email'   : req.body.email,
-		'password': req.body.password
-	};
-	if( user.email && user.password )
-	{
-		db.loginWithEmail(user, 
-				function(currentUser){ //on success
-					res.redirect('/');
-				},
-				function(error,msg){ //on error
-					res.render('error-page', {'error_message' : msg})
-				}); 
-	}
-	else
-	{
-		res.redirect('/user/login/');	
-	}
+	var session = req.session;
+	var token   = req.body.token;
+
+	console.log('token:' , jwt.decode(token, conf.FB_SECRET ));
+	session.isLoggedin = true;	
+	res.send({redirect: '/'});
+
 });
+
+
 //----------------- Create New User and Login --------------------
 route.post('/user/save', function(req,res,next){
 	var  user = { 'firstname' : req.body.firstname,

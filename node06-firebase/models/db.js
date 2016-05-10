@@ -1,11 +1,36 @@
 var Firebase = require('firebase');
 var _ = require('lodash');
+var conf = require('../config/');
 
-var ref = new Firebase('https://mushop.firebaseio.com/');
+var FirebaseTokenGenerator = require('firebase-token-generator');
+var tokenGenerator  = new FirebaseTokenGenerator( conf.FB_SECRET );
+
+var ref = new Firebase( conf.FB_URL );
 
 var catsRef = ref.child('categories');
 var collsRef = ref.child('collections');
 
+
+var _token = module.exports.TOKEN = tokenGenerator.createToken({
+				'uid'  : '	498c052f-0211-467a-b568-e2a315e6cbe8',
+				'email': 'staff@cc.com',
+				'user' : 'MuShop Application'
+			} , { 'admin': true});
+
+module.exports.connect = function( req, res, next){
+	ref.authWithCustomToken( _token, function(error, authData){
+		if(authData){
+			//console.log('----Auth---:', authData.uid );
+			
+		}
+		else{
+			console.log('----Auth Error---:', error );
+			res.redirect('/error');
+		}		
+	});// auth with custom token
+	next();
+};
+//-------------------------------------------------
 module.exports.isLoggedIn = function(onuserisauth){
 	var authData = ref.getAuth();
 	if( authData )
